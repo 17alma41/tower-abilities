@@ -11,7 +11,6 @@ public class LinearMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.position * speed;
         ShotDirection();
     }
 
@@ -21,14 +20,13 @@ public class LinearMovement : MonoBehaviour
         
     }
 
+
+    //Disparar hacia la dirección a la que apunta el jugador
     void ShotDirection()
     {
-        Vector3 mousePos = new Vector3(0, 0, 0);
+        //Esto da como resultado un vector que apunta desde la posición del objeto hacia la posición del cursor del mouse.
+        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
 
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        Vector3 targetDir = mousePos - transform.position;
-        float angle = Vector3.SignedAngle(Vector3.up, targetDir, Vector3.forward);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        rb.velocity = direction * speed;    
     }
 }

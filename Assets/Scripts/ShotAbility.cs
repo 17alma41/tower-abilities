@@ -11,7 +11,7 @@ public class ShotAbility : ClasePadre
 
     public override void Trigger()
     {
-        print("Clase Hija 1 heredado de Clase Padre");
+        print("Clase 1 heredado de Clase Padre");
 
         GameObject.Instantiate(
             proyectile,
