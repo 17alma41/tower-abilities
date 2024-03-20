@@ -8,6 +8,7 @@ public abstract class ClasePadre : MonoBehaviour
     [SerializeField] float coolDown;
 
 
-    public abstract void Trigger();
+    public abstract void Trigger(Vector3 direction);
+   
 
 }

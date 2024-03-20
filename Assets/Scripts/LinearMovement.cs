@@ -4,28 +4,15 @@ using UnityEngine;
 
 public class LinearMovement : MonoBehaviour
 {
-    public float speed = 20;
     Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        ShotDirection();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     //Disparar hacia la dirección a la que apunta el jugador
-    void ShotDirection()
+    public void ShotDirection(float speed, Vector3 direction)
     {
         //Esto da como resultado un vector que apunta desde la posición del objeto hacia la posición del cursor del mouse.
-        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        //direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+
+        rb = GetComponent<Rigidbody2D>();
 
         rb.velocity = direction * speed;    
     }

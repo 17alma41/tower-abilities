@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
+    LinearMovement linearMovement;
     [SerializeField] List<ClasePadre> abilities;
     int selectedAbilityIndex = 0;
 
@@ -28,18 +29,16 @@ public class AbilityHolder : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))
             selectedAbilityIndex = 4;
 
-        if (Input.GetMouseButtonDown(0))
-            abilities[selectedAbilityIndex].Trigger();
-
-
-
         Vector3 mousePos = new Vector3(0, 0, 0);
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        Vector3 targetDir = mousePos - transform.position;
+        Vector3 targetDir = (mousePos - transform.position).normalized;
         float angle = Vector3.SignedAngle (Vector3.up, targetDir, Vector3.forward);
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if (Input.GetMouseButtonDown(0))
+            abilities[selectedAbilityIndex].Trigger(targetDir);
 
     }
 }

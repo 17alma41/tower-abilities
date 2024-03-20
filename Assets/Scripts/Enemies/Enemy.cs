@@ -29,10 +29,20 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Proyectible"))
         {
+            EnemyStats enemyHealth = collision.gameObject.GetComponent<EnemyStats>();
+            print("Awww me has dado");
+            enemyHealth.Hurt(1);
+
+
             //Destruir el poreyectil cuando choca contra el enemigo
             Destroy(collision.gameObject);  
+        }
 
-            //Destruir el enemigo
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerStats playerHealth = collision.gameObject.GetComponent<PlayerStats>();
+            playerHealth.Hurt(1);
+
             Destroy(gameObject);
         }
     }
