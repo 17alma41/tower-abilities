@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] int maxHealth;
-    int currentHealth;
+    SpriteRenderer sp;
 
+    [Header("Health")]
+    [SerializeField] int maxHealth;
+    [SerializeField] int currentHealth = 0;
+
+    [Header("Visuals")]
+    [SerializeField] Gradient hurtColor;
 
     // Start is called before the first frame update
     void Start()
     {
+        sp = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
     }
 
@@ -20,15 +26,25 @@ public class PlayerStats : MonoBehaviour
         
     }
 
-    public void Hurt(int amount)
+    IEnumerator GetDamage(int damage)
     {
-        currentHealth -= amount;
+        currentHealth -= damage;
+
+        float hurt = 1f * damage / currentHealth;
+        sp.color = hurtColor.Evaluate(hurt);
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            //GameEvents.PlayerDied.Invoke();
+            print("El jugador ha sido destruido.");
+            Destroy(gameObject);
         }
+
+        yield return null;
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        StartCoroutine(GetDamage(damage));
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityHolder : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class AbilityHolder : MonoBehaviour
     [SerializeField] List<ClasePadre> abilities;
     int selectedAbilityIndex = 0;
 
+    [SerializeField] Icons icons;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,10 @@ public class AbilityHolder : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (Input.GetMouseButtonDown(0))
+        {
             abilities[selectedAbilityIndex].Trigger(targetDir);
+            //icons.UpdateAbilityIcon();
+        }
 
     }
 }
