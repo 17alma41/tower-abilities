@@ -498,7 +498,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &971201635
@@ -620,7 +620,6 @@ GameObject:
   - component: {fileID: 1334823227}
   - component: {fileID: 1334823226}
   - component: {fileID: 1334823225}
-  - component: {fileID: 1334823228}
   m_Layer: 0
   m_Name: Icons
   m_TagString: Untagged
@@ -712,19 +711,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1334823228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334823223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c57e2af084658e478d1dbcc57019c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ability1: {fileID: 971201634}
 --- !u!1 &1586247276
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +784,7 @@ GameObject:
   - component: {fileID: 1954502136}
   - component: {fileID: 1954502139}
   - component: {fileID: 1954502140}
+  - component: {fileID: 1954502141}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -851,7 +838,6 @@ MonoBehaviour:
   abilities:
   - {fileID: 1954502133}
   - {fileID: 1954502132}
-  icons: {fileID: 0}
 --- !u!4 &1954502135
 Transform:
   m_ObjectHideFlags: 0
@@ -933,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c029c3ead6009439500ed3a689b9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 400
   currentHealth: 0
   hurtColor:
     serializedVersion: 2
@@ -1042,6 +1028,20 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
+--- !u!114 &1954502141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954502131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c57e2af084658e478d1dbcc57019c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability1: {fileID: 971201634}
+  cooldownTime: 1
 --- !u!1 &2066264152
 GameObject:
   m_ObjectHideFlags: 0

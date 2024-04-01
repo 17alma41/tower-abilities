@@ -9,12 +9,13 @@ public class AbilityHolder : MonoBehaviour
     [SerializeField] List<ClasePadre> abilities;
     int selectedAbilityIndex = 0;
 
-    [SerializeField] Icons icons;
+    CoolDown cooldown;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        cooldown = GetComponent<CoolDown>();
+    
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class AbilityHolder : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             abilities[selectedAbilityIndex].Trigger(targetDir);
-            //icons.UpdateAbilityIcon();
+            cooldown.StartCooldown();
         }
 
     }
