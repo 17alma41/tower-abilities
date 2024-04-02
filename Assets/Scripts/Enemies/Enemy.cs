@@ -45,7 +45,6 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            print("El enemigo ha sido destruido.");
             Destroy(gameObject);
         }
 
@@ -66,6 +65,13 @@ public class Enemy : MonoBehaviour
 
             //Destruir el proyectil cuando choca contra el enemigo
             Destroy(collision.gameObject);  
+        }
+
+        if (collision.gameObject.CompareTag("MegaProjectile"))
+        {
+            ApplyDamage(10);
+
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Player"))

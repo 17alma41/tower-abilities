@@ -9,12 +9,9 @@ public class AbilityHolder : MonoBehaviour
     [SerializeField] List<ClasePadre> abilities;
     int selectedAbilityIndex = 0;
 
-    CoolDown cooldown;
-
     // Start is called before the first frame update
     void Start()
     {
-        cooldown = GetComponent<CoolDown>();
     
     }
 
@@ -41,10 +38,8 @@ public class AbilityHolder : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (Input.GetMouseButtonDown(0))
-        {
             abilities[selectedAbilityIndex].Trigger(targetDir);
-            cooldown.StartCooldown();
-        }
+        
 
     }
 }

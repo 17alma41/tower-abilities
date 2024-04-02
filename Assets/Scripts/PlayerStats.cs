@@ -35,8 +35,7 @@ public class PlayerStats : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            print("El jugador ha sido destruido.");
-            Destroy(gameObject);
+            GameEvents.PlayerDead.Invoke();
         }
 
         yield return null;
@@ -47,4 +46,9 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(GetDamage(damage));
     }
 
+    public void Heal(int health)
+    {
+        currentHealth += health;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
 }
