@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ClasePadre : MonoBehaviour
+public abstract class Ability : ScriptableObject
 {
     [SerializeField] string abilityName;
     public float cooldown;
-    protected float elapsedCooldown = 0f;
+    [HideInInspector] public float elapsedCooldown = 0f;
     protected bool isCooldown = false;
-
-    public abstract void Trigger(Vector3 direction);
    
-    protected void StartCooldown()
+    protected Transform transform;
+    public abstract void Trigger(Vector3 direction);
+
+    public abstract void Transform(Transform player);
+
+
+    //public Coroutine StartCoroutine(IEnumerator routine);
+
+    protected IEnumerator cooldownCouroutine()
     {
         isCooldown = true;
         elapsedCooldown = 0f;
-        StartCoroutine(cooldownCouroutine());
-    }
 
-    public IEnumerator cooldownCouroutine()
-    {
         while (elapsedCooldown <= cooldown)
         {
             elapsedCooldown += Time.deltaTime;

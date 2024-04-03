@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetHealth : ClasePadre
+[CreateAssetMenu]
+public class GetHealth : Ability
 {
     PlayerStats playerHealth;
 
@@ -13,7 +14,7 @@ public class GetHealth : ClasePadre
     void Start()
     {
         getHealthIcon.fillAmount = 1f;
-        playerHealth = GetComponent<PlayerStats>();
+        //playerHealth = GetComponent<PlayerStats>();
     }
 
     void Update()
@@ -28,7 +29,7 @@ public class GetHealth : ClasePadre
     {
         if (!isCooldown)
         {
-            StartCooldown();
+            //StartCooldown();
 
             playerHealth.Heal(10);
         }
@@ -37,4 +38,10 @@ public class GetHealth : ClasePadre
             elapsedCooldown = 0;
         }
     }
+
+    public override void Transform(Transform player)
+    {
+
+    }
+
 }

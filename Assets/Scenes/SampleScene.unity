@@ -1319,13 +1319,10 @@ GameObject:
   - component: {fileID: 1954502135}
   - component: {fileID: 1954502138}
   - component: {fileID: 1954502134}
-  - component: {fileID: 1954502133}
-  - component: {fileID: 1954502132}
-  - component: {fileID: 1954502141}
+  - component: {fileID: 1954502142}
   - component: {fileID: 1954502136}
   - component: {fileID: 1954502139}
   - component: {fileID: 1954502140}
-  - component: {fileID: 1954502142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1333,42 +1330,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1954502132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954502131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cc9a7a8619f9a4690e926ab85430d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: 
-  cooldown: 2
-  speed: 2
-  projectile: {fileID: 8711317585313371601, guid: 663fd89a62e0b424d8d9138a598fcd84, type: 3}
-  spawnPoint: {fileID: 693618293}
-  megaShotIcon: {fileID: 363518811}
---- !u!114 &1954502133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954502131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700bc9e09e8977347b9d3f1f6dc76ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Shot
-  cooldown: 0.3
-  speed: 10
-  projectile: {fileID: 82404960110503238, guid: 3b8b7bd9951641d4dbcca3262de920f6, type: 3}
-  spawnPoint: {fileID: 693618293}
-  shotAbilityIcon: {fileID: 971201634}
 --- !u!114 &1954502134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,9 +1343,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 1954502133}
-  - {fileID: 1954502132}
-  - {fileID: 1954502141}
+  - {fileID: 11400000, guid: 7b65473124c8df541a0c6ddea0abfcc5, type: 2}
+  - {fileID: 11400000, guid: 7c2f3cb2e4d0ca845aab38e4d60f8a0c, type: 2}
+  - {fileID: 11400000, guid: 5879636bcb09cd948aee92175068bc98, type: 2}
+  spawnPoint: {fileID: 693618293}
 --- !u!4 &1954502135
 Transform:
   m_ObjectHideFlags: 0
@@ -1576,21 +1538,6 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
---- !u!114 &1954502141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954502131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49d1b2d6b76bf7042aa5178708ee53d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: GetHealth
-  cooldown: 5
-  getHealthIcon: {fileID: 176649948}
 --- !u!114 &1954502142
 MonoBehaviour:
   m_ObjectHideFlags: 0

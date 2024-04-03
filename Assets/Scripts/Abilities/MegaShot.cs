@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MegaShot : ClasePadre
+[CreateAssetMenu]
+public class MegaShot : Ability
 {
     LinearMovement linearMovement;
 
     [Header("Shoot")]
     [SerializeField] float speed;
     [SerializeField] GameObject projectile;
-    [SerializeField] Transform spawnPoint;
 
     [Header("Icon")]
     [SerializeField] Image megaShotIcon;
@@ -32,11 +32,11 @@ public class MegaShot : ClasePadre
     {
         if (!isCooldown)
         {
-            StartCooldown();
+            //StartCooldown();
 
             GameObject projectileInsta = Instantiate(
                 projectile,
-                spawnPoint.position,
+                transform.position,
                 Quaternion.identity
             );
 
@@ -51,4 +51,10 @@ public class MegaShot : ClasePadre
         }
 
     }
+
+    public override void Transform(Transform player)
+    {
+
+    }
+
 }

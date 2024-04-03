@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class AbilityHolder : MonoBehaviour
 {
-    LinearMovement linearMovement;
-    [SerializeField] List<ClasePadre> abilities;
+    [SerializeField] List<Ability> abilities;
     int selectedAbilityIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-    
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            abilities[i].Transform(transform);
+        }
     }
 
     // Update is called once per frame
@@ -38,8 +40,10 @@ public class AbilityHolder : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (Input.GetMouseButtonDown(0))
+        {
+            print("using " + abilities[selectedAbilityIndex].name);
             abilities[selectedAbilityIndex].Trigger(targetDir);
-        
-
+        }
+            
     }
 }
