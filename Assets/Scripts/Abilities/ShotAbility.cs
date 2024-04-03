@@ -31,11 +31,11 @@ public class ShotAbility : Ability
         }
     }
 
-    public override void Trigger(Vector3 direction)
+    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine)
     {
-        //if (!isCooldown) 
-    
-            
+        if (!isCooldown)
+        {
+
             GameObject projectileInsta = Instantiate(
                 projectile,
                 spawnPoint.position,
@@ -47,13 +47,13 @@ public class ShotAbility : Ability
 
             Destroy(projectileInsta, 2f);
 
-        
-        /*
+            mbCoroutine.StartCoroutine(cooldownCouroutine());
+        } 
         else if (elapsedCooldown >= cooldown)
         {
             elapsedCooldown = 0;
         }
-        */
+        
     }
 
     public override void Transform(Transform player)

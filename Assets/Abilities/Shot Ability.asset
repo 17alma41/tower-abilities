@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Shot Ability
   m_EditorClassIdentifier: 
   abilityName: 
-  cooldown: 1
-  elapsedCooldown: 0
+  cooldown: 0.5
+  elapsedCooldown: 0.5001905
   spawnPoint: {fileID: 0}
   speed: 10
   projectile: {fileID: 82404960110503238, guid: 3b8b7bd9951641d4dbcca3262de920f6, type: 3}

@@ -25,7 +25,7 @@ public class GetHealth : Ability
         }
     }
 
-    public override void Trigger(Vector3 direction)
+    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine)
     {
         if (!isCooldown)
         {

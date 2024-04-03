@@ -10,7 +10,7 @@ public abstract class Ability : ScriptableObject
     protected bool isCooldown = false;
    
     protected Transform transform;
-    public abstract void Trigger(Vector3 direction);
+    public abstract void Trigger(Vector3 direction, MonoBehaviour mbCoroutine);
 
     public abstract void Transform(Transform player);
 

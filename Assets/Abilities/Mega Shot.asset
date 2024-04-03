@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Mega Shot
   m_EditorClassIdentifier: 
   abilityName: 
-  cooldown: 0
-  elapsedCooldown: 0
-  speed: 0
-  projectile: {fileID: 8711317585313371601, guid: 663fd89a62e0b424d8d9138a598fcd84, type: 3}
+  cooldown: 3
+  elapsedCooldown: 2.6605272
+  spawnPoint: {fileID: 0}
+  speed: 2
+  megaProjectile: {fileID: 8711317585313371601, guid: 663fd89a62e0b424d8d9138a598fcd84, type: 3}
   megaShotIcon: {fileID: 0}

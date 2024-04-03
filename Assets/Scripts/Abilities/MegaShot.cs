@@ -8,9 +8,11 @@ public class MegaShot : Ability
 {
     LinearMovement linearMovement;
 
+    public Transform spawnPoint;
+
     [Header("Shoot")]
     [SerializeField] float speed;
-    [SerializeField] GameObject projectile;
+    [SerializeField] public GameObject megaProjectile;
 
     [Header("Icon")]
     [SerializeField] Image megaShotIcon;
@@ -28,15 +30,15 @@ public class MegaShot : Ability
         }
     }
 
-    public override void Trigger(Vector3 direction)
+    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine)
     {
         if (!isCooldown)
         {
             //StartCooldown();
 
             GameObject projectileInsta = Instantiate(
-                projectile,
-                transform.position,
+                megaProjectile,
+                spawnPoint.position,
                 Quaternion.identity
             );
 
@@ -44,6 +46,9 @@ public class MegaShot : Ability
             linearMovement.ShotDirection(speed, direction);
 
             Destroy(projectileInsta, 8f);
+
+            mbCoroutine.StartCoroutine(cooldownCouroutine());
+
         }
         else if (elapsedCooldown >= cooldown)
         {
@@ -54,7 +59,7 @@ public class MegaShot : Ability
 
     public override void Transform(Transform player)
     {
-
+        spawnPoint = player.Find("Gun");
     }
 
 }

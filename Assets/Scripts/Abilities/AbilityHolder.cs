@@ -42,7 +42,7 @@ public class AbilityHolder : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             print("using " + abilities[selectedAbilityIndex].name);
-            abilities[selectedAbilityIndex].Trigger(targetDir);
+            abilities[selectedAbilityIndex].Trigger(targetDir, this);
         }
             
     }
