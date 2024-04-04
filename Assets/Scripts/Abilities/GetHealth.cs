@@ -29,9 +29,10 @@ public class GetHealth : Ability
     {
         if (!isCooldown)
         {
-            //StartCooldown();
-
+            playerHealth = mbCoroutine.GetComponent<PlayerStats>();
             playerHealth.Heal(10);
+
+            mbCoroutine.StartCoroutine(cooldownCouroutine());
         }
         else if (elapsedCooldown >= cooldown)
         {

@@ -8,6 +8,8 @@ public class AbilityHolder : MonoBehaviour
     [SerializeField] List<Ability> abilities;
     int selectedAbilityIndex = 0;
 
+    [SerializeField] Image[] selectionBackground;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,19 @@ public class AbilityHolder : MonoBehaviour
             print("using " + abilities[selectedAbilityIndex].name);
             abilities[selectedAbilityIndex].Trigger(targetDir, this);
         }
-            
+
+        //La selección para cada índice de habilidad
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (i == selectedAbilityIndex)
+            {
+                if (selectionBackground[i] != null)
+                    selectionBackground[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                selectionBackground[i].gameObject.SetActive(false);
+            }
+        }
     }
 }
