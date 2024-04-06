@@ -15,19 +15,11 @@ public class ShotAbility : Ability
     [SerializeField] float speed;
     [SerializeField] public GameObject projectile;
 
-    [Header("Icon")]
-    [SerializeField] Image shotAbilityIcon;
-
-    void Start()
-    {
-        shotAbilityIcon.fillAmount = 1f;
-    }
-
     void Update()
     {
-        if (isCooldown)
+        if (isCooldown && abilityIcon != null)
         {
-            shotAbilityIcon.fillAmount = Mathf.Clamp01(elapsedCooldown / cooldown);
+            abilityIcon.fillAmount = Mathf.Clamp01(1 - (elapsedCooldown / cooldown));
         }
     }
 
@@ -46,6 +38,7 @@ public class ShotAbility : Ability
             linearMovement.ShotDirection(speed, direction);
 
             Destroy(projectileInsta, 2f);
+
 
             mbCoroutine.StartCoroutine(cooldownCouroutine());
         } 

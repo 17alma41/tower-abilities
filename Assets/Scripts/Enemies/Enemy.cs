@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     SpriteRenderer sp;
+    bool playerIsDead = false;
+
 
     [Header("Vida del enemigo")]
     [SerializeField] int maxHealth;
@@ -26,6 +28,12 @@ public class Enemy : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         currentHealth = maxHealth;
+
+        GameEvents.PlayerDead.AddListener(OnPlayerDeath);
+    }
+    void OnPlayerDeath()
+    {
+        playerIsDead = true;
     }
 
     // Update is called once per frame
@@ -33,8 +41,13 @@ public class Enemy : MonoBehaviour
     {
         Vector3 enemyToPlayer = (playerTransform.position - transform.position).normalized;
 
-        transform.position += enemyToPlayer * speed * Time.deltaTime;
+        if (playerIsDead)
+            transform.position -= enemyToPlayer * speed * Time.deltaTime;
+        else
+            transform.position += enemyToPlayer * speed * Time.deltaTime;
+
     }
+
 
     IEnumerator Hurt(int damage)
     {

@@ -14,19 +14,11 @@ public class MegaShot : Ability
     [SerializeField] float speed;
     [SerializeField] public GameObject megaProjectile;
 
-    [Header("Icon")]
-    [SerializeField] Image megaShotIcon;
-
-    void Start()
-    {
-        megaShotIcon.fillAmount = 1f;
-    }
-
     void Update()
     {
-        if (isCooldown)
+        if (isCooldown && abilityIcon != null)
         {
-            megaShotIcon.fillAmount = Mathf.Clamp01(elapsedCooldown / cooldown);
+            abilityIcon.fillAmount = Mathf.Clamp01(1 - (elapsedCooldown / cooldown));
         }
     }
 
@@ -34,8 +26,6 @@ public class MegaShot : Ability
     {
         if (!isCooldown)
         {
-            //StartCooldown();
-
             GameObject projectileInsta = Instantiate(
                 megaProjectile,
                 spawnPoint.position,

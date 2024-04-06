@@ -7,11 +7,21 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] List<Transform> enemySpawn;
 
+    bool playerIsDead = false;
+
+    [Header("Tiempo de aparición del enemigo")]
+    [SerializeField] float spawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(enemySpawner());
+        GameEvents.PlayerDead.AddListener(OnPlayerDeath);
+    }
+
+    void OnPlayerDeath()
+    {
+        playerIsDead = true;
     }
 
     // Update is called once per frame
@@ -25,11 +35,14 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            Vector3 spawnPos = enemySpawn[Random.Range(0, enemySpawn.Count)].position;
-            GameObject.Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            if (!playerIsDead)
+            {
+                Vector3 spawnPos = enemySpawn[Random.Range(0, enemySpawn.Count)].position;
+                GameObject.Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            }
 
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(spawnTime);
         }
     }
  

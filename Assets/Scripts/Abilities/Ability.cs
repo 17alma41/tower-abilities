@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Ability : ScriptableObject
 {
@@ -10,12 +11,12 @@ public abstract class Ability : ScriptableObject
     protected bool isCooldown = false;
    
     protected Transform transform;
+    [SerializeField] protected Image abilityIcon;
+
     public abstract void Trigger(Vector3 direction, MonoBehaviour mbCoroutine);
 
     public abstract void Transform(Transform player);
 
-
-    //public Coroutine StartCoroutine(IEnumerator routine);
 
     protected IEnumerator cooldownCouroutine()
     {

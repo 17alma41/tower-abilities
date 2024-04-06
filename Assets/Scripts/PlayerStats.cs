@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] int maxHealth;
-    [SerializeField] int currentHealth = 0;
+    int currentHealth = 0;
 
     [Header("Visuals")]
     [SerializeField] Gradient hurtColor;
@@ -23,7 +23,6 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     IEnumerator GetDamage(int damage)
@@ -35,6 +34,7 @@ public class PlayerStats : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             GameEvents.PlayerDead.Invoke();
         }
 
