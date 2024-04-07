@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class AbilityHolder : MonoBehaviour
     int selectedAbilityIndex = 0;
 
     [SerializeField] Image[] selectionBackground;
+    [SerializeField] List<Image> abilityIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +56,13 @@ public class AbilityHolder : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                Image selectedIcon = abilityIcon[selectedAbilityIndex];
+
                 print("using " + abilities[selectedAbilityIndex].name);
-                abilities[selectedAbilityIndex].Trigger(targetDir, this);
+                abilities[selectedAbilityIndex].Trigger(targetDir, this, abilityIcon);
+
+                //Tiene fallos!!
+                StartCoroutine(abilities[selectedAbilityIndex].cooldownCouroutine(selectedIcon));
             }
         }
 
@@ -73,5 +80,6 @@ public class AbilityHolder : MonoBehaviour
                 selectionBackground[i].gameObject.SetActive(false);
             }
         }
+
     }
 }

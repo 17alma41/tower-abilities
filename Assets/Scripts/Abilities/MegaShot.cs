@@ -14,15 +14,15 @@ public class MegaShot : Ability
     [SerializeField] float speed;
     [SerializeField] public GameObject megaProjectile;
 
+    Image icon;
+
+
     void Update()
     {
-        if (isCooldown && abilityIcon != null)
-        {
-            abilityIcon.fillAmount = Mathf.Clamp01(1 - (elapsedCooldown / cooldown));
-        }
+      
     }
 
-    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine)
+    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine, List<Image> abilityIcon)
     {
         if (!isCooldown)
         {
@@ -37,7 +37,7 @@ public class MegaShot : Ability
 
             Destroy(projectileInsta, 8f);
 
-            mbCoroutine.StartCoroutine(cooldownCouroutine());
+            mbCoroutine.StartCoroutine(cooldownCouroutine(icon));
 
         }
         else if (elapsedCooldown >= cooldown)

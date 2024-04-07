@@ -9,16 +9,15 @@ public abstract class Ability : ScriptableObject
     public float cooldown;
     [HideInInspector] public float elapsedCooldown = 0f;
     protected bool isCooldown = false;
-   
-    protected Transform transform;
-    [SerializeField] protected Image abilityIcon;
 
-    public abstract void Trigger(Vector3 direction, MonoBehaviour mbCoroutine);
+    protected Transform transform;
+
+    public abstract void Trigger(Vector3 direction, MonoBehaviour mbCoroutine, List<Image> abilityIcon);
 
     public abstract void Transform(Transform player);
 
 
-    protected IEnumerator cooldownCouroutine()
+    public IEnumerator cooldownCouroutine(Image icon)
     {
         isCooldown = true;
         elapsedCooldown = 0f;
@@ -26,10 +25,13 @@ public abstract class Ability : ScriptableObject
         while (elapsedCooldown <= cooldown)
         {
             elapsedCooldown += Time.deltaTime;
+            icon.fillAmount = elapsedCooldown / cooldown;
             yield return null;  
         }
 
         isCooldown = false;
+        icon.fillAmount = 1f;
     }
+
 
 }

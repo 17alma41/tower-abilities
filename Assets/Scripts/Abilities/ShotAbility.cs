@@ -15,15 +15,14 @@ public class ShotAbility : Ability
     [SerializeField] float speed;
     [SerializeField] public GameObject projectile;
 
+    Image icon;
+
     void Update()
     {
-        if (isCooldown && abilityIcon != null)
-        {
-            abilityIcon.fillAmount = Mathf.Clamp01(1 - (elapsedCooldown / cooldown));
-        }
+       
     }
 
-    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine)
+    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine, List<Image> abilityIcon)
     {
         if (!isCooldown)
         {
@@ -40,13 +39,12 @@ public class ShotAbility : Ability
             Destroy(projectileInsta, 2f);
 
 
-            mbCoroutine.StartCoroutine(cooldownCouroutine());
+            mbCoroutine.StartCoroutine(cooldownCouroutine(icon));
         } 
         else if (elapsedCooldown >= cooldown)
         {
             elapsedCooldown = 0;
         }
-        
     }
 
     public override void Transform(Transform player)

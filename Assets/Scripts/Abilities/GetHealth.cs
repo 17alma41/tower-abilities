@@ -8,31 +8,25 @@ public class GetHealth : Ability
 {
     PlayerStats playerHealth;
 
-    [Header("Icon")]
-    [SerializeField] Image getHealthIcon;
+    Image icon;
 
-    void Start()
-    {
-        getHealthIcon.fillAmount = 1f;
-        //playerHealth = GetComponent<PlayerStats>();
-    }
 
     void Update()
     {
-        if (isCooldown)
-        {
-            getHealthIcon.fillAmount = Mathf.Clamp01(elapsedCooldown / cooldown);
-        }
+     
     }
 
-    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine)
+    public override void Trigger(Vector3 direction, MonoBehaviour mbCoroutine, List<Image> abilityIcon)
     {
         if (!isCooldown)
         {
             playerHealth = mbCoroutine.GetComponent<PlayerStats>();
             playerHealth.Heal(10);
-
-            mbCoroutine.StartCoroutine(cooldownCouroutine());
+            if (abilityIcon.Count > 0)
+            {
+                icon = abilityIcon[0];
+                mbCoroutine.StartCoroutine(cooldownCouroutine(icon));
+            }
         }
         else if (elapsedCooldown >= cooldown)
         {

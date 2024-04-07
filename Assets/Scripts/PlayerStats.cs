@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Visuals")]
     [SerializeField] Gradient hurtColor;
+    [SerializeField] ParticleSystem healthParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class PlayerStats : MonoBehaviour
     public void Heal(int health)
     {
         currentHealth += health;
+        healthParticle.Play();
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 }
